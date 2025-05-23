@@ -1,4 +1,4 @@
-# Anyone infected by insults no matter what should NOT use this website.
+# Anyone affected by insults no matter what should NOT use this website.
 
 # QUICK, HOW DO I CURE THIS????
 Easy, just restart your device
