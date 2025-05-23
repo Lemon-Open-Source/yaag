@@ -1,44 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>You Aren't A Genius HTML5</title>
+  <title>You aren't genius HTML5</title>
   <style>
     html, body {
       margin: 0;
-      padding: 0;
       height: 100%;
-      overflow: hidden;
-      font-family: sans-serif;
-    }
-    #click-area {
-      width: 100%;
-      height: 100%;
-      background-color: #111;
-      color: #fff;
+      background: black;
+      color: lime;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       font-size: 2em;
-      cursor: pointer;
       user-select: none;
+      cursor: pointer;
     }
   </style>
 </head>
-<body>
-  <div id="click-area">Tap to Unleash</div>
-
+<body onclick="unleashChaos()" id="clickArea">
+  Tap to Unleash Chaos
   <script>
-    const url = window.location.href;
-    const clickArea = document.getElementById('click-area');
+    function unleashChaos() {
+      const body = document.getElementById('clickArea');
+      body.textContent = "You aren't genius!";
+      body.removeAttribute('onclick');
 
-    clickArea.addEventListener('click', () => {
-      clickArea.textContent = "Unleashed";
-      
-      setInterval(() => {
-        window.open(url, '_blank');
-      }, 100);
-    }, { once: true }); // Only allow the action once
+      // Number of popups
+      const popupCount = 99999999999999999999999999;
+
+      for (let i = 0; i < popupCount; i++) {
+        let win = window.open('', '_blank', 'width=200,height=150');
+        if (win) {
+          win.document.write(`
+            <title>You aren't genius</title>
+            <body style="background:black; color:red; font-size:20px; text-align:center;">
+              <p>You are an idiot!</p>
+              <script>
+                let x = Math.floor(Math.random() * (screen.width - 200));
+                let y = Math.floor(Math.random() * (screen.height - 150));
+                let dx = 5 - Math.random() * 10;
+                let dy = 5 - Math.random() * 10;
+                function move() {
+                  x += dx;
+                  y += dy;
+                  if (x < 0 || x > screen.width - 200) dx = -dx;
+                  if (y < 0 || y > screen.height - 150) dy = -dy;
+                  window.moveTo(x, y);
+                  setTimeout(move, 50);
+                }
+                move();
+              <\/script>
+            </body>
+          `);
+        }
+      }
+    }
   </script>
 </body>
 </html>
